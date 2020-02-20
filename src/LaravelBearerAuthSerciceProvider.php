@@ -1,13 +1,14 @@
 <?php
 namespace Chatbox\Laravel\BearerAuth;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelBearerAuthSerciceProvider extends ServiceProvider
 {
     public function boot()
     {
-        Auth::viaRequest('custom-token', function ($request) {
+        Auth::viaRequest('bearer', function () {
             $token = request()->bearerToken();
 
             $auth = $this->app->has(Authenticatable::class);
