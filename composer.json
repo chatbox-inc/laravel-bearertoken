@@ -1,0 +1,16 @@
+{
+    "name": "chatbox-inc/laravel-bearertoken",
+    "authors": [
+        {
+            "name": "mikakane",
+            "email": "t.goto@chatbox-inc.com"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Chatbox\\Laravel\\BearerAuth\\": "./src/"
+        }
+    }
+}
