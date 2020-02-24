@@ -11,10 +11,12 @@ class LaravelBearerAuthSerciceProvider extends ServiceProvider
         Auth::viaRequest('bearer', function () {
             $token = request()->bearerToken();
 
-            $auth = $this->app->has(Authenticatable::class);
-            assert($auth instanceof Authenticatable);
-
-            return $auth->authWithToken($token);
+            if($this->app->has(Authenticatable::class)){
+                $auth = $this->app->make(Authenticatable::class);
+                assert($auth instanceof Authenticatable);
+                return $auth->authWithToken($token);
+            }
+            throw new \Exception("LaravelBearerAuthSerciceProvider failed to load Authenticatable");
         });
     }
 
